@@ -6,26 +6,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/displays")
 public class DisplayController {
 
-  @Autowired
-  private RestTemplate restTemplate;
-
-  private static final String PRODUCT_URL = "http://product/products/";
-
-  private static final String DELIVERY_URL = "http://delivery/deliveries/";
-
   @Value("${server.port}")
   private int port;
 
+  @Autowired
+  private FeignProductService feignProductService;
+
+  @Autowired
+  private FeignDeliveryService feignDeliveryService;
+
   @GetMapping("/{productId}")
   public String getDisplayInfo(@PathVariable String productId) {
-    String productInfo = restTemplate.getForObject(PRODUCT_URL + productId, String.class);
-    String deliveryInfo = restTemplate.getForObject(DELIVERY_URL + productId, String.class);
+    String productInfo = feignProductService.getProductInfo(productId);
+    String deliveryInfo = feignDeliveryService.getDeliveryInfo(productId);
 
     return "display port number: " + port +
         "\n\n------- productInfo -------\n" + productInfo +
