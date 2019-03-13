@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="delivery" />
         <module name="display" />
+        <module name="eureka-server" />
         <module name="product" />
         <module name="spring-cloud" />
       </profile>
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="delivery" options="-parameters" />
       <module name="display" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
       <module name="product" options="-parameters" />
       <module name="spring-cloud" options="-parameters" />
     </option>
