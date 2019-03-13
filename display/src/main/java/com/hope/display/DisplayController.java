@@ -15,9 +15,9 @@ public class DisplayController {
   @Autowired
   private RestTemplate restTemplate;
 
-  private static final String PRODUCT_URL = "http://localhost:8081/products/";
+  private static final String PRODUCT_URL = "http://product/products/";
 
-  private static final String DELIVERY_URL = "http://localhost:7081/deliveries/";
+  private static final String DELIVERY_URL = "http://delivery/deliveries/";
 
   @Value("${server.port}")
   private int port;
